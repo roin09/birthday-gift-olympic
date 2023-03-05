@@ -5,7 +5,7 @@ module.exports = function (grunt) {
       all: {
         src: "src/Image/*.png",
         dest: "sprites/images.png",
-        destCss: "css/sprites.css",
+        destCss: "src/css/sprites.css",
       },
     },
   });

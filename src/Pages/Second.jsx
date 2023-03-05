@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { dataList } from "../Datalist";
+import girls1 from "./img/girls1.png";
+import girls2 from "./img/girls2.png";
+import girls3 from "./img/girls3.png";
+import girls4 from "./img/girls4.png";
+import girls5 from "./img/girls5.png";
+
+import girls6 from "./img/girls6.png";
+import girls7 from "./img/girls7.png";
+
+import girlo1 from "./img/girlo1.png";
+import girlo2 from "./img/girlo2.png";
+import girlo3 from "./img/girlo3.png";
+import girlo4 from "./img/girlo4.png";
+import girlo5 from "./img/girlo5.png";
 const Second = () => {
   const initialState = {
     option: "first",
@@ -11,17 +24,19 @@ const Second = () => {
     const { name } = e.target;
     setOption(name);
   };
-
+  const girls = [girls1, girls2, girls3, girls4, girls5];
+  const girll = [girls6, girls7];
+  const girlo = [girlo1, girlo2, girlo3, girlo4, girlo5];
   const SComponent = () => {
-    return dataList["girls"].map((data, idx) => <div key={idx}>{data}</div>);
+    return girls.map((data, idx) => <img alt={idx} key={idx} src={data} />);
   };
 
   const LComponent = () => {
-    return dataList["girll"].map((data, idx) => <div key={idx}>{data}</div>);
+    return girll.map((data, idx) => <img alt={idx} key={idx} src={data} />);
   };
 
   const OComponent = () => {
-    return dataList["girlo"].map((data, idx) => <div key={idx}>{data}</div>);
+    return girlo.map((data, idx) => <img alt={idx} key={idx} src={data} />);
   };
 
   const selectComponent = {

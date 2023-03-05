@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { dataList } from "../Datalist";
+
+import simplel1 from "./img/simplel1.png";
+import simplel2 from "./img/simplel2.png";
+import simplel3 from "./img/simplel3.png";
+import simplel4 from "./img/simplel4.png";
+import simplel5 from "./img/simplel5.png";
+import simplel6 from "./img/simplel6.png";
+import simplel7 from "./img/simplel7.png";
+import simpleo2 from "./img/simpleo2.png";
+import simples1 from "./img/simples1.png";
+
 const First = () => {
   const initialState = {
     option: "first",
@@ -10,17 +20,44 @@ const First = () => {
     const { name } = e.target;
     setOption(name);
   };
-
+  // const dataList = {
+  //   simples: ["simples1"],
+  //   simplel: [
+  //     "simplel1",
+  //     "simplel2",
+  //     "simplel3",
+  //     "simplel4",
+  //     "simplel5",
+  //     "simplel6",
+  //     "simplel7",
+  //   ],
+  //   simpleo: ["simpleo2"],
+  //   girls: ["girls1", "girls2", "girls3", "girls4", "girls5"],
+  //   girll: ["girls6", "girls7"],
+  //   girlo: ["girlo1", "girlo2", "girlo3", "girlo4", "girlo5"],
+  //   char: ["char1", "char2", "char3"],
+  // };
+  const simples = [simples1];
+  const simplel = [
+    simplel1,
+    simplel2,
+    simplel3,
+    simplel4,
+    simplel5,
+    simplel6,
+    simplel7,
+  ];
+  const simpleo = [simpleo2];
   const SComponent = () => {
-    return dataList["simples"].map((data, idx) => <div key={idx}>{data}</div>);
+    return simples.map((data, idx) => <img alt={idx} key={idx} src={data} />);
   };
 
   const LComponent = () => {
-    return dataList["simplel"].map((data, idx) => <div key={idx}>{data}</div>);
+    return simplel.map((data, idx) => <img alt={idx} key={idx} src={data} />);
   };
 
   const OComponent = () => {
-    return dataList["simpleo"].map((data, idx) => <div key={idx}>{data}</div>);
+    return simpleo.map((data, idx) => <img alt={idx} key={idx} src={data} />);
   };
 
   const selectComponent = {
