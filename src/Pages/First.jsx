@@ -1,31 +1,48 @@
 import React, { useState } from "react";
-
+import styled from "styled-components";
+import { dataList } from "../Datalist";
 const First = () => {
-  const [option, setOption] = useState;
-  const handleClickButton = (e) => {
-    const { value } = e.target;
-    setOption(value);
+  const initialState = {
+    option: "first",
   };
+  const [option, setOption] = useState(initialState);
+  const handleClickButton = (e) => {
+    const { name } = e.target;
+    setOption(name);
+  };
+
+  const SComponent = () => {
+    return dataList["simples"].map((data, idx) => <div key={idx}>{data}</div>);
+  };
+
+  const LComponent = () => {
+    return dataList["simplel"].map((data, idx) => <div key={idx}>{data}</div>);
+  };
+
+  const OComponent = () => {
+    return dataList["simpleo"].map((data, idx) => <div key={idx}>{data}</div>);
+  };
+
   const selectComponent = {
-    first: <First />,
-    second: <Second />,
-    third: <Third />,
+    first: <SComponent />,
+    second: <LComponent />,
+    third: <OComponent />,
   };
   const buttonData = [
     {
       name: "first",
-      id: 1,
-      text: "심플",
+      id: "f",
+      text: "반팔",
     },
     {
       name: "second",
-      id: 2,
-      text: "소녀소녀",
+      id: "s",
+      text: "긴팔",
     },
     {
       name: "third",
-      id: 3,
-      text: "캐릭터",
+      id: "o",
+      text: "원피스",
     },
   ];
   const selectButtons = buttonData.map((data) => (
@@ -40,4 +57,37 @@ const First = () => {
     </>
   );
 };
-export default Main;
+
+const Container = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  justify-direction: center;
+  margin: 0 auto;
+`;
+
+const DefaultButton = styled.button`
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 1rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(139, 188, 228);
+  color: #333333;
+  &:hover {
+    filter: brightness(90%);
+  }
+  &:active {
+    filter: brightness(80%);
+  }
+  &:focus {
+    filter: brightness(90%);
+    color: blue;
+  }
+`;
+const Content = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+export default First;
