@@ -3,6 +3,7 @@ import styled from "styled-components";
 import First from "./First";
 import Second from "./Second";
 import Third from "./Third";
+import background from "./img/background.jpeg";
 const Main = () => {
   const initialState = {
     option: "first",
@@ -41,16 +42,33 @@ const Main = () => {
   ));
   return (
     <>
-      <Container>{selectButtons}</Container>
-      {option && <Content>{selectComponent[option]}</Content>}
+      <BgImage>
+        <MainBox>
+          <Container>{selectButtons}</Container>
+          {option && selectComponent[option]}
+        </MainBox>
+      </BgImage>
     </>
   );
 };
-
+const BgImage = styled.div`
+  width: 100wh;
+  height: 100vh;
+  background-image: url(${background});
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+const MainBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const Container = styled.div`
   box-sizing: border-box;
-  width: 100%;
-  justify-direction: center;
+  display: flex;
+  width: 30rem;
+  height: 10rem;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
 `;
 
@@ -61,8 +79,9 @@ const DefaultButton = styled.button`
   font-size: 0.85rem;
   text-align: center;
   cursor: pointer;
-  background-color: rgb(139, 188, 228);
+  background-color: rgba(0, 0, 0, 0.2);
   color: #333333;
+  margin: 1rem;
   &:hover {
     filter: brightness(90%);
   }
@@ -71,12 +90,18 @@ const DefaultButton = styled.button`
   }
   &:focus {
     filter: brightness(90%);
-    color: blue;
+    background-color: rgba(99, 119, 151, 0.7);
+    color: white;
   }
 `;
+
 const Content = styled.div`
-  width: 100%;
-  height: 100%;
+  display: flex;
+  width: 30rem;
+  height: 10rem;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
 `;
 
 export default Main;

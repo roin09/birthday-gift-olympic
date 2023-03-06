@@ -49,15 +49,28 @@ const First = () => {
   ];
   const simpleo = [simpleo2];
   const SComponent = () => {
-    return simples.map((data, idx) => <img alt={idx} key={idx} src={data} />);
+    return simples.map((data, idx) => (
+      <Content>
+        <img alt={idx} key={idx} src={data} />
+      </Content>
+    ));
   };
 
   const LComponent = () => {
-    return simplel.map((data, idx) => <img alt={idx} key={idx} src={data} />);
+    return simplel.map((data, idx) => (
+      <Content>
+        <img alt={idx} key={idx} src={data} />
+      </Content>
+    ));
   };
 
   const OComponent = () => {
-    return simpleo.map((data, idx) => <img alt={idx} key={idx} src={data} />);
+    return simpleo.map((data, idx) => (
+      <Content>
+        {" "}
+        <img alt={idx} key={idx} src={data} />
+      </Content>
+    ));
   };
 
   const selectComponent = {
@@ -89,16 +102,21 @@ const First = () => {
   ));
   return (
     <>
-      <Container>{selectButtons}</Container>
-      {option && <Content>{selectComponent[option]}</Content>}
+      <InnerBox>
+        <Container>{selectButtons}</Container>
+        <InnerContainer>{option && selectComponent[option]}</InnerContainer>
+      </InnerBox>
     </>
   );
 };
 
 const Container = styled.div`
   box-sizing: border-box;
-  width: 100%;
-  justify-direction: center;
+  display: flex;
+  width: 30rem;
+  height: 10rem;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
 `;
 
@@ -109,8 +127,10 @@ const DefaultButton = styled.button`
   font-size: 0.85rem;
   text-align: center;
   cursor: pointer;
-  background-color: rgb(139, 188, 228);
+  margin: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
   color: #333333;
+  margin: 2rem 0.8rem 2rem 0.8rem;
   &:hover {
     filter: brightness(90%);
   }
@@ -119,12 +139,27 @@ const DefaultButton = styled.button`
   }
   &:focus {
     filter: brightness(90%);
-    color: blue;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
   }
 `;
+const InnerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.348);
+`;
+const InnerBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const Content = styled.div`
-  width: 100%;
-  height: 100%;
+  margin: 2rem;
+  img {
+    width: 10rem;
+    height: 11rem;
+    object-fit: cover;
+  }
 `;
 
 export default First;

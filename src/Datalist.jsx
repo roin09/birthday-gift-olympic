@@ -146,21 +146,3 @@
 //   width: 1098px;
 //   height: 1074px;
 // `;
-
-export const dataList = {
-  simples: ["simples1"],
-  simplel: [
-    "simplel1",
-    "simplel2",
-    "simplel3",
-    "simplel4",
-    "simplel5",
-    "simplel6",
-    "simplel7",
-  ],
-  simpleo: ["simpleo2"],
-  girls: ["girls1", "girls2", "girls3", "girls4", "girls5"],
-  girll: ["girls6", "girls7"],
-  girlo: ["girlo1", "girlo2", "girlo3", "girlo4", "girlo5"],
-  char: ["char1", "char2", "char3"],
-};
