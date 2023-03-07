@@ -122,7 +122,7 @@ const Container = styled.div`
 `;
 
 const DefaultButton = styled.button`
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding: 0.5rem 0 0.5rem 0;
   border-radius: 1rem;
   font-weight: 500;
   font-size: 1rem;
