@@ -83,6 +83,7 @@ const BgImage = styled.div`
   height: 100vh;
   background-image: url(${background});
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 `;
 const MainBox = styled.div`
