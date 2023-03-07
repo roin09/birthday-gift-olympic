@@ -131,7 +131,9 @@ const DefaultButton = styled.button`
     filter: brightness(90%);
   }
   &:active {
-    filter: brightness(80%);
+    filter: brightness(90%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
   }
   &:focus {
     filter: brightness(90%);

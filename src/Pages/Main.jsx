@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import First from "./First";
 import Second from "./Second";
@@ -10,14 +10,18 @@ const Main = () => {
   const [option, setOption] = useState(null);
   const [show, setShow] = useState(false);
   const [showConfetti, setShowConfetti] = useState(true);
+
   const handleClickButton = (e) => {
     setShowConfetti(false);
+
     const { name } = e.target;
     if (option !== name) {
       setOption(name);
+
       setShow(true);
     } else {
       setOption(name);
+
       setShow((prev) => !prev);
     }
   };
@@ -109,7 +113,9 @@ const DefaultButton = styled.button`
     filter: brightness(90%);
   }
   &:active {
-    filter: brightness(80%);
+    filter: brightness(90%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
   }
   &:focus {
     filter: brightness(90%);
