@@ -96,15 +96,14 @@ const BgImage = styled.div`
   justify-content: center;
 `;
 const MainBox = styled.div`
-  width: 80%;
   display: flex;
   flex-direction: column;
 `;
 const Container = styled.div`
   box-sizing: border-box;
   display: flex;
-  width: 30rem;
-  height: 7rem;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
