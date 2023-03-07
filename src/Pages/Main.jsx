@@ -53,15 +53,16 @@ const Main = () => {
       id: "girl1",
       text: "Girlish",
     },
-    {
-      name: "third",
-      id: "char1",
-      text: "Character",
-    },
+
     {
       name: "forth",
       id: "co1",
       text: "Cotton",
+    },
+    {
+      name: "third",
+      id: "char1",
+      text: "Character",
     },
   ];
   const selectButtons = buttonData.map((data) => (
