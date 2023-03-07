@@ -89,7 +89,8 @@ const BgImage = styled.div`
 const MainBox = styled.div`
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  width: calc(var(--vw, 1vw) * 100);
+  height: calc(var(--vh, 1vh) * 100);
   align-items: center;
   justify-content: center;
 `;
