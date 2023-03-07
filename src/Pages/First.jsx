@@ -109,8 +109,7 @@ const First = () => {
 const Container = styled.div`
   box-sizing: border-box;
   display: flex;
-  width: 30rem;
-  height: 7rem;
+
   justify-content: center;
   align-items: center;
   margin: 0 auto;

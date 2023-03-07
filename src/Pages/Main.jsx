@@ -97,11 +97,11 @@ const BgImage = styled.div`
 `;
 const MainBox = styled.div`
   display: flex;
-  width: calc(var(--vw, 1vw) * 85);
+
+  align-items: center;
   flex-direction: column;
 `;
 const Container = styled.div`
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
