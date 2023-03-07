@@ -1,32 +1,30 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { dataList } from "../Datalist";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "./first.css";
+// Swiper에서 가져올 모듈들
+import { EffectCoverflow, Pagination } from "swiper";
 import char1 from "./img/char1.png";
 import char2 from "./img/char2.png";
 import char3 from "./img/char3.png";
 const Third = () => {
-  const initialState = {
-    option: "second",
-  };
-  const [option, setOption] = useState(initialState);
+  const [swiper, setSwiper] = useState(null);
+  const [content, setContent] = useState(null);
   const handleClickButton = (e) => {
     const { name } = e.target;
-    setOption(name);
+    setContent(name);
   };
-  const char = [char1, char2, char3];
-  const LComponent = () => {
-    return char.map((data, idx) => (
-      <Content>
-        <img alt={idx} key={idx} src={data} />
-      </Content>
-    ));
-  };
+
   const selectComponent = {
-    second: <LComponent />,
+    char: [char1, char2, char3],
   };
   const buttonData = [
     {
-      name: "second",
+      name: "char",
       id: "c",
       text: "긴팔",
     },
@@ -38,10 +36,31 @@ const Third = () => {
   ));
   return (
     <>
-      <InnerBox>
-        <Container>{selectButtons}</Container>
-        <InnerContainer>{option && selectComponent[option]} </InnerContainer>
-      </InnerBox>
+      <Container>{selectButtons}</Container>
+
+      <Swiper
+        onSwiper={setSwiper}
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        pagination={true}
+        modules={[EffectCoverflow, Pagination]}
+        className="mySwiper"
+      >
+        {selectComponent[content]?.map((data, idx) => (
+          <SwiperSlide key={idx}>
+            <img key={idx} alt={idx} src={data} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
   );
 };

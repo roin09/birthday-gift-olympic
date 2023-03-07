@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Swiper, SwiperSlide, useSwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -20,66 +20,11 @@ import simpleo2 from "./img/simpleo2.png";
 import simples1 from "./img/simples1.png";
 
 const First = () => {
-  const swiperSlide = useSwiperSlide();
   const [swiper, setSwiper] = useState(null);
-
   const [content, setContent] = useState(null);
   const handleClickButton = (e) => {
     const { name } = e.target;
     setContent(name);
-  };
-
-  // const dataList = {
-  //   simples: ["simples1"],
-  //   simplel: [
-  //     "simplel1",
-  //     "simplel2",
-  //     "simplel3",
-  //     "simplel4",
-  //     "simplel5",
-  //     "simplel6",
-  //     "simplel7",
-  //   ],
-  //   simpleo: ["simpleo2"],
-  //   girls: ["girls1", "girls2", "girls3", "girls4", "girls5"],
-  //   girll: ["girls6", "girls7"],
-  //   girlo: ["girlo1", "girlo2", "girlo3", "girlo4", "girlo5"],
-  //   char: ["char1", "char2", "char3"],
-  // };
-
-  const simples = [simples1];
-  const simplel = [
-    simplel1,
-    simplel2,
-    simplel3,
-    simplel4,
-    simplel5,
-    simplel6,
-    simplel7,
-  ];
-  const simpleo = [simpleo2];
-  const SComponent = () => {
-    return simples.map((data, idx) => (
-      <SwiperSlide>
-        <img key={idx} alt={idx} src={data} />
-      </SwiperSlide>
-    ));
-  };
-
-  const LComponent = () => {
-    return simplel.map((data, idx) => (
-      <SwiperSlide key={idx}>
-        <img alt={idx} src={data} />
-      </SwiperSlide>
-    ));
-  };
-
-  const OComponent = () => {
-    return simpleo.map((data, idx) => (
-      <SwiperSlide>
-        <img key={idx} alt={idx} src={data} />
-      </SwiperSlide>
-    ));
   };
 
   const selectComponent = {
@@ -117,21 +62,7 @@ const First = () => {
       {data.text}
     </DefaultButton>
   ));
-  let [mySwiper, setMySwiper] = useState(null);
-  // useEffect(() => {
-  //   if (content) {
-  //     let mySwiper = new Swiper(".swiper-container", {
-  //       loop: true,
-  //       slidesPerView: "2",
-  //       centeredSlides: true,
-  //       pagination: {
-  //         el: ".swiper-pagination",
-  //         clickable: true,
-  //       },
-  //     });
-  //     setMySwiper(mySwiper);
-  //   }
-  // }, [content]);
+
   return (
     <>
       <Container>{selectButtons}</Container>

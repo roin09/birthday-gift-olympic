@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "./first.css";
+// Swiper에서 가져올 모듈들
+import { EffectCoverflow, Pagination } from "swiper";
+
 import girls1 from "./img/girls1.png";
 import girls2 from "./img/girls2.png";
 import girls3 from "./img/girls3.png";
@@ -15,60 +24,31 @@ import girlo3 from "./img/girlo3.png";
 import girlo4 from "./img/girlo4.png";
 import girlo5 from "./img/girlo5.png";
 const Second = () => {
-  const initialState = {
-    option: "first",
-  };
-  const [option, setOption] = useState(initialState);
-
+  const [swiper, setSwiper] = useState(null);
+  const [content, setContent] = useState(null);
   const handleClickButton = (e) => {
     const { name } = e.target;
-    setOption(name);
-  };
-  const girls = [girls1, girls2, girls3, girls4, girls5];
-  const girll = [girls6, girls7];
-  const girlo = [girlo1, girlo2, girlo3, girlo4, girlo5];
-  const SComponent = () => {
-    return girls.map((data, idx) => (
-      <Content>
-        <img alt={idx} key={idx} src={data} />
-      </Content>
-    ));
-  };
-
-  const LComponent = () => {
-    return girll.map((data, idx) => (
-      <Content>
-        <img alt={idx} key={idx} src={data} />
-      </Content>
-    ));
-  };
-
-  const OComponent = () => {
-    return girlo.map((data, idx) => (
-      <Content>
-        <img alt={idx} key={idx} src={data} />
-      </Content>
-    ));
+    setContent(name);
   };
 
   const selectComponent = {
-    first: <SComponent />,
-    second: <LComponent />,
-    third: <OComponent />,
+    girls: [girls1, girls2, girls3, girls4, girls5],
+    girll: [girls6, girls7],
+    girlo: [girlo1, girlo2, girlo3, girlo4, girlo5],
   };
   const buttonData = [
     {
-      name: "first",
+      name: "girls",
       id: "gs",
       text: "반팔",
     },
     {
-      name: "second",
+      name: "girll",
       id: "gl",
       text: "긴팔",
     },
     {
-      name: "third",
+      name: "girlo",
       id: "go",
       text: "원피스",
     },
@@ -80,10 +60,31 @@ const Second = () => {
   ));
   return (
     <>
-      <InnerBox>
-        <Container>{selectButtons}</Container>
-        <InnerContainer>{option && selectComponent[option]} </InnerContainer>
-      </InnerBox>
+      <Container>{selectButtons}</Container>
+
+      <Swiper
+        onSwiper={setSwiper}
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        pagination={true}
+        modules={[EffectCoverflow, Pagination]}
+        className="mySwiper"
+      >
+        {selectComponent[content]?.map((data, idx) => (
+          <SwiperSlide key={idx}>
+            <img key={idx} alt={idx} src={data} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
   );
 };
