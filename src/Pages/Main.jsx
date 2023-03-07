@@ -85,14 +85,13 @@ const BgImage = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const MainBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: calc(var(--vw, 1vw) * 100);
-  height: calc(var(--vh, 1vh) * 100);
-  align-items: center;
-  justify-content: center;
 `;
 const Container = styled.div`
   box-sizing: border-box;
