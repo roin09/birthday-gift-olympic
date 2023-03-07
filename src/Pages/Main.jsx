@@ -85,11 +85,12 @@ const BgImage = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  position: fixed;
 `;
 const MainBox = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
 `;
 const Container = styled.div`
   box-sizing: border-box;
