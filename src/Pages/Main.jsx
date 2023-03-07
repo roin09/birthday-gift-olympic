@@ -79,7 +79,7 @@ const Main = () => {
   );
 };
 const BgImage = styled.div`
-  width: 100wh;
+  width: calc(var(--vw, 1vw) * 100);
   height: calc(var(--vh, 1vh) * 100);
   background-image: url(${background});
   background-repeat: no-repeat;
