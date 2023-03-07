@@ -97,6 +97,7 @@ const BgImage = styled.div`
 `;
 const MainBox = styled.div`
   display: flex;
+  width: 85%;
   flex-direction: column;
 `;
 const Container = styled.div`
