@@ -97,7 +97,8 @@ const BgImage = styled.div`
 `;
 const MainBox = styled.div`
   display: flex;
-
+  width: calc(var(--vw, 1vw) * 85);
+  height: calc(var(--vh, 1vh) * 85);
   align-items: center;
   flex-direction: column;
 `;
