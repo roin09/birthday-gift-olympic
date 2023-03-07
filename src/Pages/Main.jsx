@@ -115,6 +115,7 @@ const MainBox = styled.div`
 `;
 const Container = styled.div`
   display: flex;
+  width: calc(var(--vw, 1vw) * 90);
   justify-content: center;
   align-items: center;
   margin: 0 auto;
