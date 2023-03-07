@@ -9,7 +9,9 @@ const Main = () => {
   const jsConfetti = new JSConfetti();
   const [option, setOption] = useState(null);
   const [show, setShow] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(true);
   const handleClickButton = (e) => {
+    setShowConfetti(false);
     const { name } = e.target;
     if (option !== name) {
       setOption(name);
@@ -19,11 +21,16 @@ const Main = () => {
       setShow((prev) => !prev);
     }
   };
-  const startConfetti = setTimeout(() => {
-    jsConfetti.addConfetti({
-      emojis: ["🎉", "✨", "💫", "🌸"],
-    });
-  }, 2000);
+  const startConfetti = setInterval(() => {
+    if (showConfetti) {
+      jsConfetti.addConfetti({
+        emojis: ["🎉", "✨", "💫", "🌸"],
+      });
+    }
+  }, 2500);
+  setTimeout(() => {
+    clearInterval(startConfetti);
+  }, 5000);
   const selectComponent = {
     first: <First />,
     second: <Second />,
