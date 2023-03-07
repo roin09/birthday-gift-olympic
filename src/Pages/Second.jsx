@@ -117,10 +117,11 @@ const DefaultButton = styled.button`
   font-weight: 500;
   font-size: 0.85rem;
   text-align: center;
+  letter-spacing: 0.1rem;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0);
   color: #333333;
-  margin: 2rem 0.8rem 2rem 0.8rem;
+  margin: 1rem 0.8rem 1rem 0.8rem;
   &:hover {
     filter: brightness(90%);
   }

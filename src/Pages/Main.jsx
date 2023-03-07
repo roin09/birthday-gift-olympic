@@ -4,6 +4,8 @@ import First from "./First";
 import Second from "./Second";
 import Third from "./Third";
 import background from "./img/background.jpeg";
+import background2 from "./img/background2.jpeg";
+import background3 from "./img/background3.jpeg";
 import JSConfetti from "js-confetti";
 import Forth from "./Forth";
 const Main = () => {
@@ -78,10 +80,12 @@ const Main = () => {
   return (
     <>
       <BgImage>
-        <MainBox>
-          <Container>{selectButtons}</Container>
-          {show === true ? selectComponent[option] : null}
-        </MainBox>
+        <BlurBox>
+          <MainBox>
+            <Container>{selectButtons}</Container>
+            {show === true ? selectComponent[option] : null}
+          </MainBox>
+        </BlurBox>
       </BgImage>
     </>
   );
@@ -89,17 +93,23 @@ const Main = () => {
 const BgImage = styled.div`
   width: calc(var(--vw, 1vw) * 100);
   height: calc(var(--vh, 1vh) * 100);
-  background-image: url(${background});
+  background-image: url(${background2});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
   display: flex;
   justify-content: center;
+  align-items: center;
+`;
+const BlurBox = styled.div`
+  backdrop-filter: blur(10px);
 `;
 const MainBox = styled.div`
   display: flex;
-  width: calc(var(--vw, 1vw) * 85);
-  height: calc(var(--vh, 1vh) * 85);
+  width: calc(var(--vw, 1vw) * 90);
+  height: calc(var(--vh, 1vh) * 90);
+
   align-items: center;
   flex-direction: column;
 `;
@@ -114,11 +124,12 @@ const DefaultButton = styled.button`
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 1rem;
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: 1rem;
   text-align: center;
+  letter-spacing: 0.2rem;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2);
-  color: #333333;
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
   margin: 1rem;
   &:hover {
     filter: brightness(90%);
@@ -130,7 +141,7 @@ const DefaultButton = styled.button`
   }
   &:focus {
     filter: brightness(90%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
   }
 `;
