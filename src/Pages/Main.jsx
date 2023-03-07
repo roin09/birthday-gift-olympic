@@ -85,6 +85,7 @@ const BgImage = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  position: fixed;
 `;
 const MainBox = styled.div`
   display: flex;
