@@ -5,6 +5,7 @@ import Second from "./Second";
 import Third from "./Third";
 import background from "./img/background.jpeg";
 import JSConfetti from "js-confetti";
+import Forth from "./Forth";
 const Main = () => {
   const jsConfetti = new JSConfetti();
   const [option, setOption] = useState(null);
@@ -39,6 +40,7 @@ const Main = () => {
     first: <First />,
     second: <Second />,
     third: <Third />,
+    forth: <Forth />,
   };
   const buttonData = [
     {
@@ -55,6 +57,11 @@ const Main = () => {
       name: "third",
       id: "char1",
       text: "Character",
+    },
+    {
+      name: "forth",
+      id: "co1",
+      text: "Cotton",
     },
   ];
   const selectButtons = buttonData.map((data) => (
