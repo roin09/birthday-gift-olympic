@@ -80,7 +80,7 @@ const Main = () => {
 };
 const BgImage = styled.div`
   width: 100wh;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   background-image: url(${background});
   background-repeat: no-repeat;
   background-position: center;
