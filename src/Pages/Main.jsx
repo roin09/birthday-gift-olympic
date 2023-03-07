@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import First from "./First";
 import Second from "./Second";
 import Third from "./Third";
 import background from "./img/background.jpeg";
+import JSConfetti from "js-confetti";
 const Main = () => {
-  const initialState = {
-    option: "first",
-  };
-  const [option, setOption] = useState(initialState);
+  const jsConfetti = new JSConfetti();
+  const [option, setOption] = useState(null);
+  const [show, setShow] = useState(false);
   const handleClickButton = (e) => {
     const { name } = e.target;
-    setOption(name);
+    if (option !== name) {
+      setOption(name);
+      setShow(true);
+    } else {
+      setOption(name);
+      setShow((prev) => !prev);
+    }
   };
+  const startConfetti = setTimeout(() => {
+    jsConfetti.addConfetti({
+      emojis: ["🎉", "✨", "💫", "🌸"],
+    });
+  }, 2000);
   const selectComponent = {
     first: <First />,
     second: <Second />,
@@ -22,17 +33,17 @@ const Main = () => {
     {
       name: "first",
       id: "sim1",
-      text: "심플",
+      text: "Simple",
     },
     {
       name: "second",
       id: "girl1",
-      text: "소녀소녀",
+      text: "Girlish",
     },
     {
       name: "third",
       id: "char1",
-      text: "캐릭터",
+      text: "Character",
     },
   ];
   const selectButtons = buttonData.map((data) => (
@@ -40,12 +51,17 @@ const Main = () => {
       {data.text}
     </DefaultButton>
   ));
+  useEffect(() => {
+    if (show === false) {
+      setOption(null);
+    }
+  }, [show]);
   return (
     <>
       <BgImage>
         <MainBox>
           <Container>{selectButtons}</Container>
-          {option && selectComponent[option]}
+          {show === true ? selectComponent[option] : null}
         </MainBox>
       </BgImage>
     </>
@@ -66,7 +82,7 @@ const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   width: 30rem;
-  height: 10rem;
+  height: 7rem;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -90,7 +106,7 @@ const DefaultButton = styled.button`
   }
   &:focus {
     filter: brightness(90%);
-    background-color: rgba(99, 119, 151, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
   }
 `;

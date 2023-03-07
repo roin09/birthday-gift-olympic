@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -20,13 +20,19 @@ import simpleo2 from "./img/simpleo2.png";
 import simples1 from "./img/simples1.png";
 
 const First = () => {
-  const [swiper, setSwiper] = useState(null);
   const [content, setContent] = useState(null);
+  const [show, setShow] = useState(false);
+  const [swiper, setSwiper] = useState(null);
   const handleClickButton = (e) => {
     const { name } = e.target;
-    setContent(name);
+    if (content !== name) {
+      setContent(name);
+      setShow(true);
+    } else {
+      setContent(name);
+      setShow((prev) => !prev);
+    }
   };
-
   const selectComponent = {
     simples: [simples1],
     simplel: [
@@ -44,17 +50,17 @@ const First = () => {
     {
       name: "simples",
       id: "f",
-      text: "반팔",
+      text: "Short",
     },
     {
       name: "simplel",
       id: "s",
-      text: "긴팔",
+      text: "Long",
     },
     {
       name: "simpleo",
       id: "o",
-      text: "원피스",
+      text: "Dress",
     },
   ];
   const selectButtons = buttonData.map((data) => (
@@ -62,7 +68,11 @@ const First = () => {
       {data.text}
     </DefaultButton>
   ));
-
+  useEffect(() => {
+    if (show === false) {
+      setContent(null);
+    }
+  }, [show]);
   return (
     <>
       <Container>{selectButtons}</Container>
@@ -84,11 +94,13 @@ const First = () => {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        {selectComponent[content]?.map((data, idx) => (
-          <SwiperSlide key={idx}>
-            <img key={idx} alt={idx} src={data} />
-          </SwiperSlide>
-        ))}
+        {show === true
+          ? selectComponent[content]?.map((data, idx) => (
+              <SwiperSlide key={idx}>
+                <img key={idx} alt={idx} src={data} />
+              </SwiperSlide>
+            ))
+          : null}
       </Swiper>
     </>
   );
@@ -98,7 +110,7 @@ const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   width: 30rem;
-  height: 10rem;
+  height: 7rem;
   justify-content: center;
   align-items: center;
   margin: 0 auto;

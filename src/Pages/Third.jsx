@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -12,13 +12,19 @@ import char1 from "./img/char1.png";
 import char2 from "./img/char2.png";
 import char3 from "./img/char3.png";
 const Third = () => {
-  const [swiper, setSwiper] = useState(null);
   const [content, setContent] = useState(null);
+  const [show, setShow] = useState(false);
+  const [swiper, setSwiper] = useState(null);
   const handleClickButton = (e) => {
     const { name } = e.target;
-    setContent(name);
+    if (content !== name) {
+      setContent(name);
+      setShow(true);
+    } else {
+      setContent(name);
+      setShow((prev) => !prev);
+    }
   };
-
   const selectComponent = {
     char: [char1, char2, char3],
   };
@@ -26,7 +32,7 @@ const Third = () => {
     {
       name: "char",
       id: "c",
-      text: "긴팔",
+      text: "Long",
     },
   ];
   const selectButtons = buttonData.map((data) => (
@@ -34,6 +40,11 @@ const Third = () => {
       {data.text}
     </DefaultButton>
   ));
+  useEffect(() => {
+    if (show === false) {
+      setContent(null);
+    }
+  }, [show]);
   return (
     <>
       <Container>{selectButtons}</Container>
@@ -55,11 +66,13 @@ const Third = () => {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        {selectComponent[content]?.map((data, idx) => (
-          <SwiperSlide key={idx}>
-            <img key={idx} alt={idx} src={data} />
-          </SwiperSlide>
-        ))}
+        {show === true
+          ? selectComponent[content]?.map((data, idx) => (
+              <SwiperSlide key={idx}>
+                <img key={idx} alt={idx} src={data} />
+              </SwiperSlide>
+            ))
+          : null}
       </Swiper>
     </>
   );
@@ -68,7 +81,7 @@ const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   width: 30rem;
-  height: 10rem;
+  height: 7rem;
   justify-content: center;
   align-items: center;
   margin: 0 auto;

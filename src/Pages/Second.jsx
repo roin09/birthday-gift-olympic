@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -24,11 +24,18 @@ import girlo3 from "./img/girlo3.png";
 import girlo4 from "./img/girlo4.png";
 import girlo5 from "./img/girlo5.png";
 const Second = () => {
-  const [swiper, setSwiper] = useState(null);
   const [content, setContent] = useState(null);
+  const [show, setShow] = useState(false);
+  const [swiper, setSwiper] = useState(null);
   const handleClickButton = (e) => {
     const { name } = e.target;
-    setContent(name);
+    if (content !== name) {
+      setContent(name);
+      setShow(true);
+    } else {
+      setContent(name);
+      setShow((prev) => !prev);
+    }
   };
 
   const selectComponent = {
@@ -40,17 +47,17 @@ const Second = () => {
     {
       name: "girls",
       id: "gs",
-      text: "반팔",
+      text: "Short",
     },
     {
       name: "girll",
       id: "gl",
-      text: "긴팔",
+      text: "Long",
     },
     {
       name: "girlo",
       id: "go",
-      text: "원피스",
+      text: "Dress",
     },
   ];
   const selectButtons = buttonData.map((data) => (
@@ -58,6 +65,11 @@ const Second = () => {
       {data.text}
     </DefaultButton>
   ));
+  useEffect(() => {
+    if (show === false) {
+      setContent(null);
+    }
+  }, [show]);
   return (
     <>
       <Container>{selectButtons}</Container>
@@ -79,11 +91,13 @@ const Second = () => {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        {selectComponent[content]?.map((data, idx) => (
-          <SwiperSlide key={idx}>
-            <img key={idx} alt={idx} src={data} />
-          </SwiperSlide>
-        ))}
+        {show === true
+          ? selectComponent[content]?.map((data, idx) => (
+              <SwiperSlide key={idx}>
+                <img key={idx} alt={idx} src={data} />
+              </SwiperSlide>
+            ))
+          : null}
       </Swiper>
     </>
   );
@@ -93,7 +107,7 @@ const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   width: 30rem;
-  height: 10rem;
+  height: 7rem;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
